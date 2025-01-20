@@ -1,0 +1,9 @@
+site_name: My Docs
+
+plugins:
+    - search
+    - mermaid2
+    - mkdocstrings
+
+theme:
+    name: material
