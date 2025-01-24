@@ -6,13 +6,29 @@ authors = [
     {name = "Pablo Mendes Faria",email = "pablomendesfaria@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13,<4.0"
 dependencies = [
     "dbt-core (>=1.9.1,<2.0.0)",
-    "dbt-snowflake (>=1.9.0,<2.0.0)"
+    "dbt-snowflake (>=1.9.0,<2.0.0)",
+    "pandas (>=2.2.3,<3.0.0)"
 ]
 
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+blue = "^0.9.1"
+isort = "^5.13.2"
+taskipy = "^1.14.1"
+
+[tool.blue]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.taskipy.tasks]
+format = "isort . && blue ."
