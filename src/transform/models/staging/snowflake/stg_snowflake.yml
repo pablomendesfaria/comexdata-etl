@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: stg_snowflake__exports
+    description: Staged data of exports.
+    columns:
+      - name: section_code
+        description: Code of the SH section.
+      - name: section
+        description: Description of the SH section.
+      - name: chapter_code
+        description: Code of the SH chapter.
+      - name: chapter
+        description: Description of the SH chapter.
+      - name: heading_code
+        description: Code of the SH heading.
+      - name: heading
+        description: Description of the SH heading.
+      - name: subheading_code
+        description: Code of the SH subheading.
+      - name: subheading
+        description: Description of the SH subheading.
+      - name: country
+        description: Country with which Brazil traded.
+      - name: value_dollar_fob
+        description: Sales value excluding shipping and insurance.
+      - name: net_weight_kg
+        description: Net weight of the product that was commercialized.
+
+  - name: stg_snowflake__imports
+    description: Staged data of imports.
+    columns:
+      - name: section_code
+        description: Code of the SH section.
+      - name: section
+        description: Description of the SH section.
+      - name: chapter_code
+        description: Code of the SH chapter.
+      - name: chapter
+        description: Description of the SH chapter.
+      - name: heading_code
+        description: Code of the SH heading.
+      - name: heading
+        description: Description of the SH heading.
+      - name: subheading_code
+        description: Code of the SH subheading.
+      - name: subheading
+        description: Description of the SH subheading.
+      - name: country
+        description: Country with which Brazil traded.
+      - name: value_dollar_fob
+        description: Sales value excluding shipping and insurance.
+      - name: value_freight
+        description: Value of the freight.
+      - name: value_insurace
+        description: Value of the insurance.
+      - name: total_value
+        description: Total value of the product.
+      - name: net_weight_kg
+        description: Net weight of the product that was commercialized.

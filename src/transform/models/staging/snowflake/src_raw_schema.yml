@@ -1,0 +1,123 @@
+version: 2
+
+sources:
+  - name: raw_schema
+    description: This source is used to define the raw schema in the Snowflake database.
+    database: comex_db
+    schema: raw_schema
+    tables:
+      - name: export_table
+        description: This table contains the raw export data.
+        columns:
+          - name: coNcmSecrom
+            description: This column contains the code of the SH section.
+            tests:
+              - not_null
+          - name: year
+            description: This column contains the year of the data.
+            tests:
+              - not_null
+          - name: country
+            description: This column contains the country with which Brazil traded.
+            tests:
+              - not_null
+          - name: section
+            description: This column contains the description of the SH section.
+            tests:
+              - not_null
+          - name: chapterCode
+            description: This column contains the code of the SH chapter.
+            tests:
+              - not_null
+          - name: chapter
+            description: This column contains the description of the SH chapter.
+            tests:
+              - not_null
+          - name: headingCode
+            description: This column contains the code of the SH heading.
+            tests:
+              - not_null
+          - name: heading
+            description: This column contains the description of the SH heading.
+            tests:
+              - not_null
+          - name: subHeadingCode
+            description: This column contains the code of the SH subheading.
+            tests:
+              - not_null
+          - name: subHeading
+            description: This column contains the description of the SH subheading.
+            tests:
+              - not_null
+          - name: metricFOB
+            description: This column contains the sales value excluding shipping and insurance..
+            tests:
+              - not_null
+          - name: metricKG
+            description: This column contains the net weight of the product that was commercialized.
+            tests:
+              - not_null
+
+      - name: import_table
+        description: This table contains the raw import data.
+        columns:
+          - name: coNcmSecrom
+            description: This column contains the code of the SH section.
+            tests:
+              - not_null
+          - name: year
+            description: This column contains the year of the data.
+            tests:
+              - not_null
+          - name: country
+            description: This column contains the country with which Brazil traded.
+            tests:
+              - not_null
+          - name: section
+            description: This column contains the description of the SH section.
+            tests:
+              - not_null
+          - name: chapterCode
+            description: This column contains the code of the SH chapter.
+            tests:
+              - not_null
+          - name: chapter
+            description: This column contains the description of the SH chapter.
+            tests:
+              - not_null
+          - name: headingCode
+            description: This column contains the code of the SH heading.
+            tests:
+              - not_null
+          - name: heading
+            description: This column contains the description of the SH heading.
+            tests:
+              - not_null
+          - name: subHeadingCode
+            description: This column contains the code of the SH subheading.
+            tests:
+              - not_null
+          - name: subHeading
+            description: This column contains the description of the SH subheading.
+            tests:
+              - not_null
+          - name: metricFOB
+            description: This column contains the sales value excluding shipping and insurance..
+            tests:
+              - not_null
+          - name: metricKG
+            description: This column contains the net weight of the product that was commercialized.
+            tests:
+              - not_null
+          - name: metricFreight
+            description: This column contains the value of the freight.
+            tests:
+              - not_null
+          - name: metricInsurance
+            description: This column contains the value of the insurance.
+            tests:
+              - not_null
+          - name: metricCIF
+            description: This column contains the sales value including shipping and insurance.
+            tests:
+              - not_null
