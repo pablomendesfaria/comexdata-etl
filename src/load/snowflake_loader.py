@@ -25,12 +25,12 @@ def create_table_if_not_exists(cursor, table_name, columns):
     logging.info(f'Tabela {table_name} verificada/criada com sucesso.')
 
 
-def load_csv_to_snowflake(file_path, table_name, conn_params, columns):
+def load_parquet_to_snowflake(file_path, table_name, conn_params, columns):
     """
-    Carrega um arquivo CSV para uma tabela no Snowflake.
+    Carrega um arquivo Parquet para uma tabela no Snowflake.
 
     Args:
-        file_path (str): O caminho do arquivo CSV.
+        file_path (str): O caminho do arquivo Parquet.
         table_name (str): O nome da tabela no Snowflake.
         conn_params (dict): Parâmetros de conexão para o Snowflake.
         columns (str): A definição das colunas da tabela.
@@ -42,7 +42,7 @@ def load_csv_to_snowflake(file_path, table_name, conn_params, columns):
         create_table_if_not_exists(cursor, table_name, columns)
         cursor.execute(f'PUT file://{os.path.abspath(file_path)} @%{table_name}')
         cursor.execute(
-            f"COPY INTO {table_name} FROM @%{table_name} FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY = '\"')"
+            f"COPY INTO {table_name} FROM @%{table_name} FILE_FORMAT = (TYPE = 'PARQUET')"
         )
         logging.info(f'Dados carregados em {table_name} com sucesso.')
     except Exception as e:
@@ -101,10 +101,10 @@ def main():
     """
 
     # Carregar dados de exportação
-    load_csv_to_snowflake('../data/export_data.csv', 'export_table', conn_params, export_columns)
+    load_parquet_to_snowflake('data/export_data.parquet', 'export_table', conn_params, export_columns)
 
     # Carregar dados de importação
-    load_csv_to_snowflake('../data/import_data.csv', 'import_table', conn_params, import_columns)
+    load_parquet_to_snowflake('data/import_data.parquet', 'import_table', conn_params, import_columns)
 
 
 if __name__ == '__main__':
