@@ -65,7 +65,7 @@ def save_to_parquet(data, filename):
     logging.info(f'Dados salvos em {filepath}')
 
 
-def main():
+def extract():
     """
     Função principal que configura os payloads de exportação e importação,
     faz a extração dos dados da API e salva os dados em arquivos CSV.
@@ -110,7 +110,3 @@ def main():
         save_to_parquet(import_data, 'import_data.parquet')
     else:
         logging.error('Falha ao extrair dados de importação.')
-
-
-if __name__ == '__main__':
-    main()

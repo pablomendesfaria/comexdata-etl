@@ -52,7 +52,7 @@ def load_parquet_to_snowflake(file_path, table_name, conn_params, columns):
         conn.close()
 
 
-def main():
+def load():
     """
     Função principal que carrega os arquivos CSV de exportação e importação para o Snowflake.
     """
@@ -105,7 +105,3 @@ def main():
 
     # Carregar dados de importação
     load_parquet_to_snowflake('data/import_data.parquet', 'import_table', conn_params, import_columns)
-
-
-if __name__ == '__main__':
-    main()

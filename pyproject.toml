@@ -34,3 +34,5 @@ line_length = 120
 
 [tool.taskipy.tasks]
 format = "isort . && blue ."
+dbt run = "dbt run --project-dir src/transform/"
+run = "poetry run python src/main.py"
