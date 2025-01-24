@@ -63,7 +63,7 @@ def main():
         'warehouse': os.getenv('SNOWFLAKE_WAREHOUSE'),
         'database': os.getenv('SNOWFLAKE_DATABASE'),
         'schema': os.getenv('SNOWFLAKE_SCHEMA'),
-        'role': os.getenv('SNOWFLAKE_ROLE')
+        'role': os.getenv('SNOWFLAKE_ROLE'),
     }
 
     export_columns = """
