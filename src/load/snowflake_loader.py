@@ -2,12 +2,16 @@ import logging
 import os
 
 import snowflake.connector
+from dotenv import load_dotenv
+
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
 
 # Configuração do logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def create_table_if_not_exists(cursor, table_name, columns):
+def create_table_if_not_exists(cursor: snowflake.connector.cursor, table_name: str, columns: str):
     """
     Cria uma tabela no Snowflake se ela não existir.
 
@@ -25,31 +29,26 @@ def create_table_if_not_exists(cursor, table_name, columns):
     logging.info(f'Tabela {table_name} verificada/criada com sucesso.')
 
 
-def load_parquet_to_snowflake(file_path, table_name, conn_params, columns):
+def load_parquet_to_snowflake(cursor: snowflake.connector.cursor, file_path: str, table_name: str, columns: str):
     """
     Carrega um arquivo Parquet para uma tabela no Snowflake.
 
     Args:
+        cursor (snowflake.connector.cursor): O cursor do Snowflake.
         file_path (str): O caminho do arquivo Parquet.
         table_name (str): O nome da tabela no Snowflake.
-        conn_params (dict): Parâmetros de conexão para o Snowflake.
         columns (str): A definição das colunas da tabela.
     """
-    conn = snowflake.connector.connect(**conn_params)
-    cursor = conn.cursor()
-
     try:
         create_table_if_not_exists(cursor, table_name, columns)
+        cursor.execute(f'TRUNCATE TABLE {table_name}')  # Limpar a tabela antes de carregar os dados
         cursor.execute(f'PUT file://{os.path.abspath(file_path)} @%{table_name}')
         cursor.execute(
-            f"COPY INTO {table_name} FROM @%{table_name} FILE_FORMAT = (TYPE = 'PARQUET')"
+            f"COPY INTO {table_name} FROM @%{table_name} FILE_FORMAT = (TYPE = 'PARQUET') MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE"
         )
         logging.info(f'Dados carregados em {table_name} com sucesso.')
     except Exception as e:
         logging.error(f'Erro ao carregar dados: {e}')
-    finally:
-        cursor.close()
-        conn.close()
 
 
 def load():
@@ -100,8 +99,10 @@ def load():
     metricCIF FLOAT
     """
 
-    # Carregar dados de exportação
-    load_parquet_to_snowflake('data/export_data.parquet', 'export_table', conn_params, export_columns)
+    with snowflake.connector.connect(**conn_params) as conn:
+        with conn.cursor() as cursor:
+            # Carregar dados de exportação
+            load_parquet_to_snowflake(cursor, 'data/export_data.parquet', 'export_table', export_columns)
 
-    # Carregar dados de importação
-    load_parquet_to_snowflake('data/import_data.parquet', 'import_table', conn_params, import_columns)
+            # Carregar dados de importação
+            load_parquet_to_snowflake(cursor, 'data/import_data.parquet', 'import_table', import_columns)

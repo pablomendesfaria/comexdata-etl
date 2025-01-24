@@ -13,6 +13,7 @@ dependencies = [
     "pandas (>=2.2.3,<3.0.0)",
     "pip-system-certs (>=4.0,<5.0)",
     "pyarrow (>=19.0.0,<20.0.0)",
+    "python-dotenv (>=1.0.1,<2.0.0)",
 ]
 
 
@@ -34,5 +35,5 @@ line_length = 120
 
 [tool.taskipy.tasks]
 format = "isort . && blue ."
-dbt run = "dbt run --project-dir src/transform/"
+dbtrun = "dbt run --project-dir src/transform/"
 run = "poetry run python src/main.py"

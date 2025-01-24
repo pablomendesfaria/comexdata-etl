@@ -18,7 +18,7 @@ class ComexStatAPI:
         headers (dict): Cabeçalhos HTTP para as requisições.
     """
 
-    def __init__(self, base_url):
+    def __init__(self, base_url: str):
         """
         Inicializa a classe ComexStatAPI com a URL base da API.
 
@@ -28,7 +28,7 @@ class ComexStatAPI:
         self.base_url = base_url
         self.headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
 
-    def fetch_data(self, payload):
+    def fetch_data(self, payload: dict):
         """
         Faz uma requisição POST para a API com o payload fornecido e retorna os dados em formato JSON.
 
@@ -50,7 +50,7 @@ class ComexStatAPI:
         return None
 
 
-def save_to_parquet(data, filename):
+def save_to_parquet(data: dict, filename: str):
     """
     Salva os dados fornecidos em um arquivo Parquet na pasta 'data'.
 
