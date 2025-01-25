@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_headings
+    description: Dimension table for headings.
+    columns:
+      - name: chapter_code
+        description: Code of the SH chapter.
+        tests:
+          - not_null
+      - name: heading_code
+        description: Code of the SH heading.
+        tests:
+          - unique
+          - not_null
+      - name: heading
+        description: Description of the SH heading.
+        tests:
+          - not_null

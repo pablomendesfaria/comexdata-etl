@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: dim_sections
+    description: Dimension table for sections.
+    columns:
+      - name: section_code
+        description: Code of the SH section.
+        tests:
+          - unique
+          - not_null
+      - name: section
+        description: Description of the SH section.
+        tests:
+          - not_null

@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fact_exports
+    description: This model represents the record of Brazilian exports.
+    columns:
+      - name: fact_export_id
+        description: The fact export ID.
+        tests:
+          - unique
+          - not_null
+      - name: country_id
+        description: The country ID.
+        tests:
+          - not_null
+      - name: sub_heading_code
+        description: Code of the SH subheading.
+        tests:
+          - not_null
+      - name: value_dollar_fob
+        description: Sales value excluding shipping and insurance.
+        tests:
+          - not_null
+      - name: net_weight_kg
+        description: Net weight of the product that was commercialized.
+        tests:
+          - not_null
