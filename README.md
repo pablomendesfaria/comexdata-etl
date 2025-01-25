@@ -147,3 +147,10 @@ Após a execução do pipeline, os dados estarão disponíveis no Snowflake em u
 ## Testes de Qualidade dos Dados
 
 O dbt é configurado para executar testes de qualidade dos dados, garantindo a integridade e a precisão dos dados carregados e transformados.
+
+## Snowflake
+
+![Condiguração do ambiente do Snowflake](https://github.com/user-attachments/assets/4360cbcf-6f1f-4d1f-8e51-9b5bf54fb651)
+
+![Analise simples dos principais parceiros comerciais do Brasil](https://github.com/user-attachments/assets/4fd4a03f-d0ae-4756-9a29-67ff48fa520d)
+
