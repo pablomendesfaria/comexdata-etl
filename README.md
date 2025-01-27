@@ -1,5 +1,9 @@
 # ComexData ETL Project
 
+## Diagrama
+
+![Diagrama ELT](https://github.com/user-attachments/assets/8a4dcec5-2baa-4058-8a46-310ebc533416)
+
 ## Descrição
 
 Este projeto é um pipeline de ETL (Extração, Transformação e Carga) para dados de comércio exterior do Brasil, utilizando a API do Comex Stat. O pipeline extrai dados de importação e exportação, carrega-os no Snowflake, e aplica transformações utilizando dbt (data build tool). O objetivo é fornecer uma estrutura de dados dimensional para análise de dados de comércio exterior.
