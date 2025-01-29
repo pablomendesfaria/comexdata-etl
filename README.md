@@ -2,7 +2,7 @@
 
 ## Diagrama
 
-![Diagrama ELT](https://github.com/user-attachments/assets/8a4dcec5-2baa-4058-8a46-310ebc533416)
+![image](https://github.com/user-attachments/assets/c90b2d81-13c0-4bcd-a6fa-6a5fa37baf93)
 
 ## Descrição
 
