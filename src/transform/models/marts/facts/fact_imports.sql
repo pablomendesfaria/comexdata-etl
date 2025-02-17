@@ -7,7 +7,7 @@ with imports as (
         i.value_insurance,
         i.total_value,
         i.net_weight_kg
-    from {{ ref('stg_snowflake__imports')}} as i
+    from {{ ref('stg_comexstat__imports')}} as i
     join {{ ref('dim_countries') }} as c
         on i.country = c.country_name
     join {{ ref('dim_subheadings') }} as s

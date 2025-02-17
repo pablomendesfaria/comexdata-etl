@@ -2,12 +2,12 @@ with sections as (
     select distinct
         section_code,
         section
-    from {{ ref('stg_snowflake__imports')}}
+    from {{ ref('stg_comexstat__imports')}}
     union
     select distinct
         section_code,
         section
-    from {{ ref('stg_snowflake__exports')}}
+    from {{ ref('stg_comexstat__exports')}}
 )
 
 select

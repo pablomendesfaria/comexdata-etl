@@ -3,7 +3,7 @@ with chapters as (
         s.section_code,
         i.chapter_code,
         i.chapter
-    from {{ ref('stg_snowflake__imports')}} as i
+    from {{ ref('stg_comexstat__imports')}} as i
     join {{ ref('dim_sections')}} as s
     using (section_code)
     union
@@ -11,7 +11,7 @@ with chapters as (
         s.section_code,
         e.chapter_code,
         e.chapter
-    from {{ ref('stg_snowflake__exports')}} as e
+    from {{ ref('stg_comexstat__exports')}} as e
     join {{ ref('dim_sections')}} as s
     using (section_code)
 )

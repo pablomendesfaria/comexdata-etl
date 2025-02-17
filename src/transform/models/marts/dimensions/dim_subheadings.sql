@@ -3,7 +3,7 @@ with subheadings as (
         h.heading_code,
         i.sub_heading_code,
         i.sub_heading
-    from {{ ref('stg_snowflake__imports')}} as i
+    from {{ ref('stg_comexstat__imports')}} as i
     join {{ ref('dim_headings')}} as h
     using (heading_code)
     union
@@ -11,7 +11,7 @@ with subheadings as (
         h.heading_code,
         e.sub_heading_code,
         e.sub_heading
-    from {{ ref('stg_snowflake__exports')}} as e
+    from {{ ref('stg_comexstat__exports')}} as e
     join {{ ref('dim_headings')}} as h
     using (heading_code)
 )

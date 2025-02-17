@@ -4,7 +4,7 @@ with exports as (
         s.sub_heading_code,
         e.value_dollar_fob,
         e.net_weight_kg
-    from {{ ref('stg_snowflake__exports')}} as e
+    from {{ ref('stg_comexstat__exports')}} as e
     join {{ ref('dim_countries') }} as c
         on e.country = c.country_name
     join {{ ref('dim_subheadings') }} as s

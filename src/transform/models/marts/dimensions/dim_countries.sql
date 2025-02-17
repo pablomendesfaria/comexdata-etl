@@ -1,11 +1,11 @@
 with countries as (
     select distinct
         country as country_name
-    from {{ ref('stg_snowflake__imports')}}
+    from {{ ref('stg_comexstat__imports')}}
     union
     select distinct
         country as country_name
-    from {{ ref('stg_snowflake__exports')}}
+    from {{ ref('stg_comexstat__exports')}}
 )
 
 select

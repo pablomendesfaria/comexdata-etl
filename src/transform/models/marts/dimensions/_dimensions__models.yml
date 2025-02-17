@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: dim_sections
+    description: Dimension table for sections.
+    columns:
+      - name: section_code
+        description: Code of the SH section.
+        tests:
+          - unique
+          - not_null
+      - name: section
+        description: Description of the SH section.
+        tests:
+          - not_null
+
+  - name: dim_chapters
+    description: Dimension table for chapters.
+    columns:
+      - name: section_code
+        description: Code of the SH section.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_sections')
+              field: section_code
+      - name: chapter_code
+        description: Code of the SH chapter.
+        tests:
+          - unique
+          - not_null
+      - name: chapter
+        description: Description of the SH chapter.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_headings
+    description: Dimension table for headings.
+    columns:
+      - name: chapter_code
+        description: Code of the SH chapter.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_chapters')
+              field: chapter_code
+      - name: heading_code
+        description: Code of the SH heading.
+        tests:
+          - unique
+          - not_null
+      - name: heading
+        description: Description of the SH heading.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_subheadings
+    description: Dimension table for subheadings.
+    columns:
+      - name: heading_code
+        description: Code of the SH heading.
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_headings')
+              field: heading_code
+      - name: sub_heading_code
+        description: Code of the SH subheading.
+        tests:
+          - unique
+          - not_null
+      - name: sub_heading
+        description: Description of the SH subheading.
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_countries
+    description: Dimension table for countries.
+    columns:
+      - name: country_id
+        description: ID of the country.
+        tests:
+          - unique
+          - not_null
+      - name: country_name
+        description: Name of the country.
+        tests:
+          - unique
+          - not_null
